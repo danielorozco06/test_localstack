@@ -12,4 +12,4 @@ python3 create_secret.py
 python3 get_secret_value.py
 
 ./stop.sh
-``
+```
