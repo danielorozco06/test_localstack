@@ -28,15 +28,15 @@ def create_secret(
         return "Error: AWS credentials not found."
 
 
-secret_name = "secret1"
-secret_value = "daniel"
+secret_names = ["secret1", "secret2", "secret3"]
+secret_values = ["value1", "value2", "value3"]
 region_name = "us-east-1"
-localstack_endpoint_url = "http://localhost:4566"
+localstack_url = "http://localhost:4566"
 
-created_secret_arn = create_secret(
-    secret_name, secret_value, region_name, localstack_endpoint_url
-)
-if created_secret_arn:
-    print("Secret created with ARN:", created_secret_arn)
-else:
-    print("Failed to create the secret.")
+for secret_name, secret_value in zip(secret_names, secret_values):
+    secret_arn = create_secret(secret_name, secret_value, region_name, localstack_url)
+
+    if secret_arn:
+        print("Secret created with ARN:", secret_arn)
+    else:
+        print("Failed to create the secret.")
