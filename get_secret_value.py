@@ -19,11 +19,9 @@ def get_secret_value(secret_name: str, region_name: str, endpoint_url: str) -> s
         # Retrieve the secret value
         response = client.get_secret_value(SecretId=secret_name)
 
-        # Return the secret value
         if "SecretString" in response:
             return response["SecretString"]
         else:
-            # If the secret is stored as binary, you can access it using response['SecretBinary']
             return ""
 
     except NoCredentialsError:
