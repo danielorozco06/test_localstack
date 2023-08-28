@@ -30,12 +30,19 @@ def get_secret_value(secret_name: str, region_name: str, endpoint_url: str) -> s
         return "Error: AWS credentials not found."
 
 
-secret_name = "secret1"
+secret_names = ["secret1", "secret2", "secret3"]
 region_name = "us-east-1"
-localstack_endpoint_url = "http://localhost:4566"
+localstack_url = "http://localhost:4566"
 
-secret_value = get_secret_value(secret_name, region_name, localstack_endpoint_url)
-if secret_value:
-    print("Secret Value:", secret_value)
-else:
-    print("Failed to retrieve the secret value.")
+secret_values = []
+for secret_name in secret_names:
+    secret_value = get_secret_value(secret_name, region_name, localstack_url)
+
+    if secret_value:
+        secret_values.append(secret_value)
+        print("Secret name:", secret_name, "Secret Value:", secret_value)
+    else:
+        secret_values.append("")
+        print("Failed to retrieve the secret value.")
+
+print(secret_values)
