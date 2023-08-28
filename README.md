@@ -1,4 +1,13 @@
-# Process
+# Localstack
+
+## Requirements
+
+- WSL
+- Docker environment
+- Python 3.X
+- Pip
+
+## Process
 
 ```sh
 ./start.sh
